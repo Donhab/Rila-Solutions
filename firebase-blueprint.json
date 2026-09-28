@@ -1,0 +1,220 @@
+{
+  "entities": {
+    "consultation": {
+      "title": "Consultation",
+      "description": "Enterprise cloud consultation and project discovery inquiry.",
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Full name of the client representative."
+        },
+        "workEmail": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 120,
+          "description": "Official corporate or institutional email."
+        },
+        "organization": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 150,
+          "description": "Enterprise or school organization name."
+        },
+        "serviceTrack": {
+          "type": "string",
+          "enum": [
+            "cloud-architecture",
+            "zero-trust-cybersecurity",
+            "educator-academy",
+            "hybrid-migration"
+          ],
+          "description": "Selected architectural service capability track."
+        },
+        "message": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 2000,
+          "description": "Scope details and technical challenges."
+        },
+        "prefilledScope": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Calculated scope breakdown from the estimator."
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 30,
+          "description": "Direct contact or WhatsApp phone number."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["received", "in_review", "scheduled", "completed"],
+          "description": "Processing workflow status."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO timestamp of submission."
+        }
+      },
+      "required": [
+        "fullName",
+        "workEmail",
+        "organization",
+        "serviceTrack",
+        "message",
+        "status",
+        "createdAt"
+      ]
+    },
+    "educatorApplication": {
+      "title": "EducatorApplication",
+      "description": "Application for Primary & Secondary teacher digital literacy and LMS training cohort.",
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Teacher or school administrator full name."
+        },
+        "institution": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 150,
+          "description": "Primary or Secondary school name."
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "primary_educator",
+            "secondary_educator",
+            "district_administrator",
+            "technical_instructor"
+          ],
+          "description": "Educational instructional role."
+        },
+        "trackId": {
+          "type": "string",
+          "enum": [
+            "track-canvas",
+            "track-google",
+            "track-safeguarding",
+            "track-stem"
+          ],
+          "description": "Target professional certification track."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 120,
+          "description": "Educator official contact email."
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 30,
+          "description": "Phone number for cohort scheduling."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["submitted", "enrolled", "certified"],
+          "description": "Application review status."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Submission ISO timestamp."
+        }
+      },
+      "required": [
+        "fullName",
+        "institution",
+        "role",
+        "trackId",
+        "email",
+        "status",
+        "createdAt"
+      ]
+    },
+    "portalTicket": {
+      "title": "PortalTicket",
+      "description": "Client or educator portal support ticket or architecture inquiry.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 150,
+          "description": "Brief incident or request summary."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "architecture",
+            "cybersecurity",
+            "lms-sync",
+            "infrastructure",
+            "billing"
+          ],
+          "description": "Ticket functional category."
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["critical", "high", "standard"],
+          "description": "SLA urgency classification."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000,
+          "description": "Detailed incident description."
+        },
+        "authorName": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Submitter name."
+        },
+        "authorRole": {
+          "type": "string",
+          "enum": ["enterprise_client", "educator_admin"],
+          "description": "Portal user role."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "investigating", "resolved"],
+          "description": "Ticket lifecycle status."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of ticket creation."
+        }
+      },
+      "required": [
+        "title",
+        "category",
+        "severity",
+        "description",
+        "status",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/consultations/{consultationId}": {
+      "schema": "consultation",
+      "description": "Inquiries and architectural consultation submissions."
+    },
+    "/educator_applications/{applicationId}": {
+      "schema": "educatorApplication",
+      "description": "Registrations for school educator digital literacy cohorts."
+    },
+    "/portal_tickets/{ticketId}": {
+      "schema": "portalTicket",
+      "description": "Client and educator portal support tickets and change requests."
+    }
+  }
+}

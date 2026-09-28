@@ -1,0 +1,87 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: Validate document IDs
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 64 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Helper: Validate Consultation payloads
+    function isValidConsultation(data) {
+      return data.keys().hasAll(['fullName', 'workEmail', 'organization', 'serviceTrack', 'message', 'status', 'createdAt'])
+        && data.keys().hasOnly(['fullName', 'workEmail', 'organization', 'serviceTrack', 'message', 'status', 'createdAt', 'prefilledScope', 'phone'])
+        && data.fullName is string && data.fullName.size() >= 2 && data.fullName.size() <= 100
+        && data.workEmail is string && data.workEmail.size() >= 3 && data.workEmail.size() <= 120
+        && data.organization is string && data.organization.size() >= 2 && data.organization.size() <= 150
+        && data.serviceTrack in ['cloud-architecture', 'zero-trust-cybersecurity', 'educator-academy', 'hybrid-migration']
+        && data.message is string && data.message.size() >= 5 && data.message.size() <= 2000
+        && data.status in ['received', 'in_review', 'scheduled', 'completed']
+        && data.createdAt is string && data.createdAt.size() <= 40
+        && (!('prefilledScope' in data) || (data.prefilledScope is string && data.prefilledScope.size() <= 500))
+        && (!('phone' in data) || (data.phone is string && data.phone.size() <= 30));
+    }
+
+    // Helper: Validate Educator Application payloads
+    function isValidEducatorApplication(data) {
+      return data.keys().hasAll(['fullName', 'institution', 'role', 'trackId', 'email', 'status', 'createdAt'])
+        && data.keys().hasOnly(['fullName', 'institution', 'role', 'trackId', 'email', 'status', 'createdAt', 'phone'])
+        && data.fullName is string && data.fullName.size() >= 2 && data.fullName.size() <= 100
+        && data.institution is string && data.institution.size() >= 2 && data.institution.size() <= 150
+        && data.role in ['primary_educator', 'secondary_educator', 'district_administrator', 'technical_instructor']
+        && data.trackId in ['track-canvas', 'track-google', 'track-safeguarding', 'track-stem']
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 120
+        && data.status in ['submitted', 'enrolled', 'certified']
+        && data.createdAt is string && data.createdAt.size() <= 40
+        && (!('phone' in data) || (data.phone is string && data.phone.size() <= 30));
+    }
+
+    // Helper: Validate Portal Ticket payloads
+    function isValidPortalTicket(data) {
+      return data.keys().hasAll(['title', 'category', 'severity', 'description', 'status', 'createdAt'])
+        && data.keys().hasOnly(['title', 'category', 'severity', 'description', 'status', 'createdAt', 'authorName', 'authorRole'])
+        && data.title is string && data.title.size() >= 3 && data.title.size() <= 150
+        && data.category in ['architecture', 'cybersecurity', 'lms-sync', 'infrastructure', 'billing']
+        && data.severity in ['critical', 'high', 'standard']
+        && data.description is string && data.description.size() >= 10 && data.description.size() <= 2000
+        && data.status in ['open', 'investigating', 'resolved']
+        && data.createdAt is string && data.createdAt.size() <= 40
+        && (!('authorName' in data) || (data.authorName is string && data.authorName.size() <= 100))
+        && (!('authorRole' in data) || data.authorRole in ['enterprise_client', 'educator_admin']);
+    }
+
+    // Consultations: public creation with strict schema
+    match /consultations/{consultationId} {
+      allow create: if isValidId(consultationId) && isValidConsultation(request.resource.data);
+      allow read: if true;
+      allow update, delete: if false;
+    }
+
+    // Educator Applications: public submission
+    match /educator_applications/{applicationId} {
+      allow create: if isValidId(applicationId) && isValidEducatorApplication(request.resource.data);
+      allow read: if true;
+      allow update, delete: if false;
+    }
+
+    // Portal Support Tickets: creation and status updates
+    match /portal_tickets/{ticketId} {
+      allow create: if isValidId(ticketId) && isValidPortalTicket(request.resource.data);
+      allow read: if true;
+      allow update: if isValidId(ticketId) && isValidPortalTicket(request.resource.data);
+      allow delete: if false;
+    }
+
+    // Connection testing document
+    match /test/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Catch-all deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
