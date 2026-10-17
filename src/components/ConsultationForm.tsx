@@ -103,6 +103,14 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ prefilledSco
               </div>
 
               <div className="flex items-start gap-3 text-xs text-slate-300">
+                <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <strong className="text-white">CAC Certified Corporate Entity: </strong>
+                  Officially registered with the Corporate Affairs Commission (Federal Republic of Nigeria) for enterprise cloud, software engineering, and educational transformation.
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 text-xs text-slate-300">
                 <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-white">Enterprise & Educational Rates: </strong>

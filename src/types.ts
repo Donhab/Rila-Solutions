@@ -25,7 +25,7 @@ export interface ProjectTicket {
 
 export interface SecurityAuditItem {
   id: string;
-  framework: 'SOC 2 Type II' | 'ISO 27001' | 'FERPA / COPPA' | 'Zero-Trust IAM';
+  framework: 'SOC 2 Type II' | 'ISO 27001' | 'FERPA / COPPA' | 'Zero-Trust IAM' | 'CAC Certified';
   status: 'passed' | 'monitoring' | 'verified';
   lastChecked: string;
   score: string;

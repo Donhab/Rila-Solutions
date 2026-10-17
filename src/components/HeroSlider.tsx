@@ -73,9 +73,9 @@ const SLIDES: Slide[] = [
   {
     id: 'slide-5',
     image: '/src/assets/images/cybersecurity_shield_vault_1790425714057.jpg',
-    tag: 'Zero-Trust Cybersecurity & Regulatory Compliance',
-    title: 'Hardware-Backed KMS Encryption & Automated SOC 2 Audits',
-    description: 'Strict FERPA, COPPA, and NDPR student privacy fences with continuous automated vulnerability scanning and immutable SIEM logs.',
+    tag: 'CAC Certified Entity · Zero-Trust Cybersecurity & Regulatory Compliance',
+    title: 'Hardware-Backed KMS Encryption, CAC Registration & SOC 2 Audits',
+    description: 'Corporate Affairs Commission (CAC) certified Nigerian entity with strict FERPA, COPPA, and NDPR privacy fences, continuous automated vulnerability scanning, and immutable SIEM logs.',
     actionText: 'Review Security Blueprint',
     actionTarget: 'architecture',
     accentColor: 'text-cyan-300 border-cyan-400/50'

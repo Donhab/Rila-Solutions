@@ -23,9 +23,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onNavigate }) => {
           />
         </div>
 
-        {/* Category metadata & Direct Contact Header */}
+        {/* Category metadata, CAC Certification & Direct Contact Header */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-          <div className="flex items-center gap-2 text-xs font-medium tracking-wide text-cyan-400">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-medium tracking-wide text-cyan-400">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/50 bg-emerald-950/80 text-emerald-300 font-mono text-[11px] font-bold shadow-sm shadow-emerald-500/10">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+              <span>CAC CERTIFIED & REGISTERED ENTITY</span>
+            </span>
+            <span aria-hidden="true" className="text-slate-600">·</span>
             <span>Enterprise Cloud Systems</span>
             <span aria-hidden="true" className="text-slate-600">·</span>
             <span>Zero-Trust Cybersecurity</span>
@@ -94,12 +99,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onNavigate }) => {
         </div>
 
         {/* Claim-to-Proof Quantitative Adjacency Grid */}
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3 border-t border-slate-800/80 pt-8">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 border-t border-slate-800/80 pt-8">
           <div>
             <div className="font-mono text-3xl font-extrabold text-white tabular-nums tracking-tight">
               99.999%
             </div>
-            <div className="mt-1 text-sm font-medium text-slate-400">
+            <div className="mt-1 text-sm font-medium text-slate-300">
               Verified Production Uptime SLA
             </div>
             <p className="mt-1 text-xs text-slate-400">
@@ -108,14 +113,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onNavigate }) => {
           </div>
 
           <div>
+            <div className="font-mono text-3xl font-extrabold text-emerald-400 tabular-nums tracking-tight flex items-center gap-1.5">
+              <span>CAC</span>
+              <span className="text-xs px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/50 text-emerald-300 font-sans font-semibold">Verified</span>
+            </div>
+            <div className="mt-1 text-sm font-medium text-slate-300">
+              CAC Certified Corporate Entity
+            </div>
+            <p className="mt-1 text-xs text-slate-400">
+              Corporate Affairs Commission (Federal Republic of Nigeria) registered company.
+            </p>
+          </div>
+
+          <div>
             <div className="font-mono text-3xl font-extrabold text-cyan-400 tabular-nums tracking-tight">
               Zero-Trust
             </div>
-            <div className="mt-1 text-sm font-medium text-slate-400">
-              SOC 2 Type II, ISO 27001 & FERPA
+            <div className="mt-1 text-sm font-medium text-slate-300">
+              SOC 2, ISO 27001 & FERPA
             </div>
             <p className="mt-1 text-xs text-slate-400">
-              Hardware-backed KMS encryption, immutable SIEM logging & isolated student data vaults.
+              Hardware-backed KMS encryption, immutable SIEM logging & isolated student vaults.
             </p>
           </div>
 
@@ -123,11 +141,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onNavigate }) => {
             <div className="font-mono text-3xl font-extrabold text-white tabular-nums tracking-tight">
               14,200+
             </div>
-            <div className="mt-1 text-sm font-medium text-slate-400">
-              Educators Certified Across 340+ Schools
+            <div className="mt-1 text-sm font-medium text-slate-300">
+              Certified Educators & Staff
             </div>
             <p className="mt-1 text-xs text-slate-400">
-              Primary & Secondary teacher digital literacy, Canvas & Google Classroom mastery.
+              Primary & Secondary teacher digital literacy across GSTC Garki Area 3 & 340+ schools.
             </p>
           </div>
         </div>

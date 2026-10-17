@@ -123,6 +123,14 @@ export const SECURITY_AUDITS: SecurityAuditItem[] = [
     lastChecked: '2026-09-26',
     score: '99.98% Strict',
     description: 'Context-aware authentication, continuous posture validation, and automated privilege expiration.'
+  },
+  {
+    id: 'sec-5',
+    framework: 'CAC Certified',
+    status: 'verified',
+    lastChecked: '2026-10-15',
+    score: 'Official RC Entity',
+    description: 'Corporate Affairs Commission (Federal Republic of Nigeria) registered & certified corporate entity for enterprise cloud, software engineering & educational tech.'
   }
 ];
 

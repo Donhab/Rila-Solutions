@@ -35,6 +35,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPortal, onNavigate }) => {
               Rila <span className="text-cyan-400 font-medium">Solutions</span>
             </span>
           </a>
+
+          <div 
+            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/50 bg-emerald-950/70 text-[10px] font-mono text-emerald-300 font-bold tracking-wider shadow-sm" 
+            title="Corporate Affairs Commission (CAC) Certified Entity · Federal Republic of Nigeria"
+          >
+            <ShieldCheck className="h-3 w-3 text-emerald-400" />
+            <span>CAC CERTIFIED</span>
+          </div>
         </div>
 
         {/* Zone 2: 4-5 clean text navigation links */}
@@ -204,7 +212,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPortal, onNavigate }) => {
             </a>
           </div>
 
-          {/* Quick Contact Block in Mobile Menu */}
+          {/* Quick Contact & CAC Certification Block in Mobile Menu */}
+          <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-xs">
+            <span className="flex items-center gap-1.5 text-emerald-300 font-mono text-[11px] font-bold">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+              <span>CAC CERTIFIED ENTITY</span>
+            </span>
+            <span className="text-[10px] text-slate-400 font-mono">Nigeria RC</span>
+          </div>
+
           <div className="p-3 rounded-xl border border-slate-800 bg-slate-900/60 text-xs text-slate-300 space-y-2">
             <div className="font-mono text-[11px] text-cyan-400 font-semibold uppercase">
               Call / SMS / WhatsApp:

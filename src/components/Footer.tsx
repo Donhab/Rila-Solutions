@@ -122,7 +122,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPortal, onNavigate }) => {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 pt-2 text-[11px] text-slate-500">
+            <div className="flex flex-wrap items-center gap-2 pt-2 text-[11px] text-slate-400">
+              <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+                <span>CAC Certified Entity (Nigeria)</span>
+              </span>
+              <span>·</span>
               <span>SOC 2 Type II Certified</span>
               <span>·</span>
               <span>ISO/IEC 27001</span>
@@ -272,6 +277,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPortal, onNavigate }) => {
           <div className="flex flex-wrap items-center gap-2 font-mono">
             <span className="text-cyan-400 font-bold">Powered by:</span>
             <span className="text-white font-extrabold text-xs">©Rila Solutions</span>
+            <span className="text-slate-600">·</span>
+            <span className="text-emerald-400 font-semibold">CAC Certified Entity</span>
             <span className="text-slate-600">·</span>
             <span className="text-slate-400">All rights reserved.</span>
           </div>
